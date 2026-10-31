@@ -1,5 +1,7 @@
 # CyberRakshak AI — AI Cyber Security Assistant & Threat Defense Platform
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Mayank1426/cyberraksha)
+
 CyberRakshak AI is a full-stack cybersecurity defense platform combining machine learning models and LLM intelligence to protect everyday citizens from online fraud, scams, phishing URLs, malicious documents, and deepfakes.
 
 ---
