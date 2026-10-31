@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.env
+.env
+.venv/
+env/
+venv/
+ENV/
+
+# Duplicate local archives / models (the active ones are located in models/)
+final_phishing_model.pkl
+sms_otp_model.joblib
+
+# Nested duplicate directory
+CyberRakshak_AI_Frontend/
+
+# OS and Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberRakshak AI — Your Digital Safety Guardian</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Glowing Cyber Background Orbs -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Mobile App Root Container (Modern Centered Device / Responsive App Shell) -->
+  <div class="mobile-app-shell">
+
+    <!-- Screen Navigation Segmented Bar (Ultra-Clean Glass Pill Controller) -->
+    <header class="app-top-nav-wrap">
+      <nav class="screens-quick-bar" aria-label="Quick Screen Navigation">
+        <button class="screen-pill-btn active" data-target="chat">
+          <span class="pill-icon">💬</span>
+          <span data-i18n="nav_chat">Chatbot</span>
+        </button>
+        <button class="screen-pill-btn" data-target="academy">
+          <span class="pill-icon">🛡️</span>
+          <span data-i18n="nav_awareness">Awareness</span>
+        </button>
+        <button class="screen-pill-btn" data-target="history">
+          <span class="pill-icon">🕒</span>
+          <span data-i18n="nav_history">History</span>
+        </button>
+        <button class="screen-pill-btn" data-target="language">
+          <span class="pill-icon">🌐</span>
+          <span data-i18n="nav_language">Language</span>
+        </button>
+        <button class="screen-pill-btn" data-target="profile">
+          <span class="pill-icon">👤</span>
+          <span data-i18n="nav_profile">Profile</span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- MAIN APP SCREEN CONTAINER -->
+    <main class="app-viewport">
+
+      <!-- ==================== 1. CHATBOT SCREEN (PRIMARY) ==================== -->
+      <section class="screen-page active" id="screen-chat">
+        <header class="app-header">
+          <div class="header-brand">
+            <div class="brand-shield-icon pulse-glow">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z" fill="#FFFFFF"/><path d="M12 10a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm0 1c-1.1 0-2 .6-2 1.5V14h4v-1.5c0-.9-.9-1.5-2-1.5z" fill="#FFB703"/></svg>
+            </div>
+            <div class="brand-title-wrap">
+              <h2>CyberRakshak <span>AI</span></h2>
+              <div id="groqStatusBadge" class="header-status-indicator online">
+                <span class="status-dot"></span>
+                <span class="status-text" data-i18n="groq_active">24/7 AI Protected</span>
+              </div>
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="clear-chat-btn" onclick="clearChatThread()" title="Reset Conversation" data-i18n="btn_reset">🔄 Reset</button>
+            <button class="lang-badge-btn" id="chatLangBadge" onclick="navigateTo('language')">EN ▾</button>
+          </div>
+        </header>
+
+        <!-- Main Chat Content Container -->
+        <div class="chat-thread" id="chatThread">
+
+          <!-- ==================== AWARENESS SLIDESHOW CAROUSEL ==================== -->
+          <div class="awareness-carousel-wrapper" id="awarenessCarousel" aria-label="Cyber Safety Awareness Carousel">
+            <div class="carousel-track-container">
+              <div class="carousel-track" id="carouselTrack">
+
+                <!-- Slide 1: Digital Arrest Fraud -->
+                <div class="carousel-slide active" data-slide="0">
+                  <div class="slide-media-wrap">
+                    <img src="assets/digital_arrest_fraud.png" alt="Beware of Digital Arrest Fraud">
+                    <div class="slide-gradient-overlay"></div>
+                    <span class="slide-category-badge badge-red">🚨 CRITICAL SCAM ALERT</span>
+                  </div>
+                  <div class="slide-caption-box">
+                    <div class="slide-title-wrap">
+                      <h4>Beware of Digital Arrest Fraud</h4>
+                      <p>Scammers impersonate Police/CBI on Skype or WhatsApp video calls demanding money. Police NEVER arrests via video call!</p>
+                    </div>
+                    <button class="slide-cta-btn danger" onclick="sendQuickPrompt('What is a digital arrest scam and what should I do if someone calls from police via Skype?')">
+                      <span>Ask AI About This</span> →
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Slide 2: National Cyber Crime Reporting Portal -->
+                <div class="carousel-slide" data-slide="1">
+                  <div class="slide-media-wrap">
+                    <img src="assets/portal_cybercrime.png" alt="National Cyber Crime Reporting Portal">
+                    <div class="slide-gradient-overlay"></div>
+                    <span class="slide-category-badge badge-blue">🏛️ OFFICIAL GOVT HELPLINE</span>
+                  </div>
+                  <div class="slide-caption-box">
+                    <div class="slide-title-wrap">
+                      <h4>National Cyber Crime Portal &amp; 1930</h4>
+                      <p>Report online fraud within the 2-hour Golden Hour to freeze bank transfers and recover lost funds at cybercrime.gov.in.</p>
+                    </div>
+                    <div class="slide-btn-group">
+                      <button class="slide-cta-btn primary" onclick="sendQuickPrompt('What is the 1930 Cyber Helpline and when should I call it?')">
+                        <span>Helpline Guide</span> →
+                      </button>
+                      <a href="tel:1930" class="slide-call-btn">📞 Dial 1930</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 3: Stop Fraud -->
+                <div class="carousel-slide" data-slide="2">
+                  <div class="slide-media-wrap">
+                    <img src="assets/stop_fraud.png" alt="Stop Fraud Awareness">
+                    <div class="slide-gradient-overlay"></div>
+                    <span class="slide-category-badge badge-amber">⚠️ DEFENSE ESSENTIALS</span>
+                  </div>
+                  <div class="slide-caption-box">
+                    <div class="slide-title-wrap">
+                      <h4>STOP Fraud: Protect Your Digital Identity</h4>
+                      <p>Never share OTPs, enter your UPI PIN to receive money, or install APK files sent from unknown callers on WhatsApp.</p>
+                    </div>
+                    <button class="slide-cta-btn warning" onclick="sendQuickPrompt('Do I ever need to enter my UPI PIN to receive cashback or money?')">
+                      <span>UPI Safety Rule</span> →
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Slide 4: AI Protection Hero Banner -->
+                <div class="carousel-slide" data-slide="3">
+                  <div class="slide-media-wrap">
+                    <img src="assets/ai_protection_hero.jpg" alt="CyberRakshak AI Shield">
+                    <div class="slide-gradient-overlay"></div>
+                    <span class="slide-category-badge badge-cyan">⚡ 24/7 AI DEFENSE SHIELD</span>
+                  </div>
+                  <div class="slide-caption-box">
+                    <div class="slide-title-wrap">
+                      <h4>CyberRakshak Real-Time AI Guardian</h4>
+                      <p>Powered by Groq Cloud 27B LLM and Hybrid Threat Classifiers. Paste any message or link in the chat below for instant forensic analysis.</p>
+                    </div>
+                    <button class="slide-cta-btn accent" onclick="document.getElementById('chatMessageInput').focus()">
+                      <span>Verify Link in Chat</span> →
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Carousel Navigation Arrows -->
+            <button class="carousel-nav-btn prev" onclick="prevSlide()" aria-label="Previous Slide">❮</button>
+            <button class="carousel-nav-btn next" onclick="nextSlide()" aria-label="Next Slide">❯</button>
+
+            <!-- Carousel Pagination Dots -->
+            <div class="carousel-dots" id="carouselDots">
+              <span class="dot active" onclick="goToSlide(0)"></span>
+              <span class="dot" onclick="goToSlide(1)"></span>
+              <span class="dot" onclick="goToSlide(2)"></span>
+              <span class="dot" onclick="goToSlide(3)"></span>
+            </div>
+          </div>
+
+          <!-- ==================== PHONEPE STYLE QUICK SERVICES GRID ==================== -->
+          <div class="phonepe-quick-actions-card">
+            <div class="phonepe-grid-title-row">
+              <span class="phonepe-section-label">⚡ QUICK CYBER FRAUD DEFENSE</span>
+              <span class="phonepe-status-pill">● 24/7 AI Active</span>
+            </div>
+            <div class="phonepe-actions-4col">
+              <div class="phonepe-action-item" onclick="promptVerifyLink()" title="Scan & Verify Suspicious Link">
+                <div class="phonepe-icon-circle bg-purple-circle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                </div>
+                <b>Verify Link</b>
+                <small>Phishing Check</small>
+              </div>
+
+              <div class="phonepe-action-item" onclick="sendQuickPrompt('Do I ever need to enter my UPI PIN to receive cashback or money?')" title="UPI PIN Safety Rules">
+                <div class="phonepe-icon-circle bg-gold-circle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/><path d="M7 15h.01M11 15h2"/></svg>
+                </div>
+                <b>UPI PIN Safety</b>
+                <small>Payment Traps</small>
+              </div>
+
+              <div class="phonepe-action-item" onclick="sendQuickPrompt('What is a digital arrest scam and what should I do if someone calls from police via Skype?')" title="Digital Arrest Defense">
+                <div class="phonepe-icon-circle bg-red-circle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4M12 16h.01"/></svg>
+                </div>
+                <b>Digital Arrest</b>
+                <small>Police Scams</small>
+              </div>
+
+              <div class="phonepe-action-item" onclick="call1930Helpline()" title="Dial 1930 Cyber Helpline">
+                <div class="phonepe-icon-circle bg-green-circle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <b>Dial 1930</b>
+                <small>Helpline FIR</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Hero Welcome Card -->
+          <div class="chat-welcome-card">
+            <div class="welcome-bot-header">
+              <div class="welcome-bot-avatar">
+                <img src="assets/robot.jpg" alt="CyberRakshak AI Guardian">
+                <span class="online-ring"></span>
+              </div>
+              <div class="welcome-bot-titles">
+                <div class="bot-name-badge">
+                  <h3 data-i18n="welcome_title">CyberRakshak AI Guardian</h3>
+                  <span class="shield-verified-tag">✓ 24/7 AI Shield</span>
+                </div>
+                <p class="welcome-subtitle" data-i18n="welcome_sub">Powered by Groq Cloud LLM &amp; Live Threat Detection</p>
+              </div>
+            </div>
+
+            <p class="welcome-text" data-i18n="welcome_body">
+              Namaste! I am your 24/7 AI Cybersecurity Assistant. Ask me anything about online fraud, verify suspicious links or messages, and learn how to stay protected.
+            </p>
+
+            <div class="chat-suggestions-box">
+              <div class="suggestions-header">
+                <span class="suggestions-sparkle">✨</span>
+                <span class="suggestions-label" data-i18n="suggestions_label">Quick Safety Prompts (Click to ask):</span>
+              </div>
+              <div class="suggestions-chips-grid">
+                <button class="chip-btn" onclick="sendQuickPrompt('Someone sent me an electricity bill disconnection notice asking to call a phone number. Is this a scam?')">
+                  <span class="chip-emoji">⚡</span>
+                  <span data-i18n="chip_electricity">Electricity Bill SMS</span>
+                </button>
+                <button class="chip-btn" onclick="sendQuickPrompt('Do I ever need to enter my UPI PIN to receive cashback or money?')">
+                  <span class="chip-emoji">💳</span>
+                  <span data-i18n="chip_upi">UPI PIN for Receiving Money?</span>
+                </button>
+                <button class="chip-btn" onclick="sendQuickPrompt('What is the 1930 Cyber Helpline and when should I call it?')">
+                  <span class="chip-emoji">🚨</span>
+                  <span data-i18n="chip_helpline">1930 Helpline Info</span>
+                </button>
+                <button class="chip-btn" onclick="sendQuickPrompt('What is a digital arrest scam and what should I do if someone calls from police via Skype?')">
+                  <span class="chip-emoji">👮</span>
+                  <span data-i18n="chip_arrest">Digital Arrest Threat</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Floating Input Footer (SAME AT BOTTOM) -->
+        <div class="chat-input-wrapper">
+          <div class="chat-input-bar">
+            <input type="text" id="chatMessageInput" placeholder="Ask CyberRakshak AI or paste any message/link..." data-i18n-placeholder="input_placeholder" autocomplete="off">
+            <button class="send-message-btn" id="sendChatBtn" onclick="handleSendMessage()" title="Send">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 2. DIGITAL SAFETY AWARENESS SCREEN ==================== -->
+      <section class="screen-page" id="screen-academy">
+        <header class="app-header">
+          <div class="header-brand">
+            <div class="brand-shield-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z" fill="#4F46E5"/><path d="M12 10a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm0 1c-1.1 0-2 .6-2 1.5V14h4v-1.5c0-.9-.9-1.5-2-1.5z" fill="#F59E0B"/></svg>
+            </div>
+            <div class="brand-title-wrap">
+              <h2>CyberRakshak <span>AI</span></h2>
+              <small data-i18n="academy_sub">Digital Safety Academy</small>
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="lang-badge-btn" onclick="navigateTo('language')">EN ▾</button>
+            <div class="user-avatar-btn" onclick="navigateTo('profile')">M</div>
+          </div>
+        </header>
+
+        <div class="screen-scroll-container padded">
+          <!-- Academy Hero Banner -->
+          <div class="academy-top-banner">
+            <div class="banner-glass-overlay"></div>
+            <div class="academy-banner-text">
+              <span class="academy-pill-tag">🎓 Interactive Safety Lessons</span>
+              <h2 data-i18n="academy_banner_title">Learn. Practice. Stay Safe.</h2>
+              <p data-i18n="academy_banner_desc">Free interactive lessons, simple language &amp; safety guides.</p>
+              <button class="watch-video-btn" onclick="openAwarenessModal()">
+                <div class="play-btn-circle">
+                  <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+                </div>
+                <span data-i18n="btn_watch_video">Watch Awareness Video</span>
+              </button>
+            </div>
+            <div class="academy-student-art">🛡️</div>
+          </div>
+
+          <!-- Emergency 1930 Helpline Banner -->
+          <div class="helpline-alert-strip" onclick="window.location.href='tel:1930'">
+            <div class="helpline-strip-icon">🚨</div>
+            <div class="helpline-strip-info">
+              <b>National Cyber Crime Helpline: 1930</b>
+              <small>Call within Golden Hour (2 hrs) to block fraud transfers</small>
+            </div>
+            <span class="call-dial-badge">DIAL 1930 📞</span>
+          </div>
+
+          <!-- ==================== AI CYBER SAFETY VIDEOS SECTION ==================== -->
+          <div class="section-title-bar">
+            <h3>🎬 Cyber Safety Awareness Videos</h3>
+            <span class="course-count-pill">4 Official Videos</span>
+          </div>
+
+          <div class="ai-videos-grid yt-videos-grid">
+            <!-- Video 1 -->
+            <div class="yt-video-card">
+              <div class="yt-video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/usMDVaxdEHY?si=fE5yn4Wt1FiX2My5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              <div class="yt-video-info">
+                <span class="video-badge-tag tag-cyan" style="position:static;display:inline-block;margin-bottom:6px;">Awareness Video #1</span>
+                <h4>Cyber Safety &amp; Scam Prevention</h4>
+                <p>Essential guidance on identifying cyber threats, phishing links, and safeguarding your digital accounts.</p>
+              </div>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="yt-video-card">
+              <div class="yt-video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/3WKXzdAwI-w?si=G2fhUIpk6g4uJFbZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              <div class="yt-video-info">
+                <span class="video-badge-tag tag-red" style="position:static;display:inline-block;margin-bottom:6px;">High Risk Alert #2</span>
+                <h4>Digital Arrest &amp; Police Impersonation Scams</h4>
+                <p>Learn how scam syndicates operate fake video calls, forge arrest warrants, and demand extortion funds.</p>
+              </div>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="yt-video-card">
+              <div class="yt-video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/IsJjqC2orMk?si=Egi8MvlaVxXbwc7I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              <div class="yt-video-info">
+                <span class="video-badge-tag tag-blue" style="position:static;display:inline-block;margin-bottom:6px;">Financial Defense #3</span>
+                <h4>Online Banking &amp; Financial Cyber Frauds</h4>
+                <p>Critical steps to keep your banking, UPI PIN, OTPs, and personal financial credentials safe from fraudsters.</p>
+              </div>
+            </div>
+
+            <!-- Video 4 -->
+            <div class="yt-video-card">
+              <div class="yt-video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/G6UpCltz864?si=B8HOuFUHsj5IpBhi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              <div class="yt-video-info">
+                <span class="video-badge-tag tag-amber" style="position:static;display:inline-block;margin-bottom:6px;">Emergency Action #4</span>
+                <h4>Golden Hour Response &amp; Reporting on 1930</h4>
+                <p>What immediate steps to take if scammed: Dialing 1930 and lodging an official complaint on cybercrime.gov.in.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== CYBER SAFETY IQ QUIZ SECTION ==================== -->
+          <div class="section-title-bar" style="margin-top: 28px;">
+            <h3>🧠 Cyber Safety IQ Quiz</h3>
+            <span class="course-count-pill" id="quizHeaderBadge">10 Scenarios</span>
+          </div>
+
+          <div class="quiz-card-wrapper" id="quizContainer">
+            <!-- Dynamically populated by renderQuiz() in app.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 3. HISTORY SCREEN ==================== -->
+      <section class="screen-page" id="screen-history">
+        <header class="app-header">
+          <div class="header-brand">
+            <button class="back-btn" onclick="navigateTo('chat')">←</button>
+            <div class="brand-shield-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z" fill="#4F46E5"/><path d="M12 10a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm0 1c-1.1 0-2 .6-2 1.5V14h4v-1.5c0-.9-.9-1.5-2-1.5z" fill="#F59E0B"/></svg>
+            </div>
+            <div class="brand-title-wrap">
+              <h2>CyberRakshak <span>AI</span></h2>
+              <small id="historyHeaderSubtitle" data-i18n="history_subtitle">Safety Inquiry History</small>
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="clear-trash-btn" onclick="clearAllHistory()" title="Clear History">🗑</button>
+          </div>
+        </header>
+
+        <div class="screen-scroll-container padded">
+          <!-- Chat Inquiries History List -->
+          <div class="history-list-box" id="chatHistoryList">
+            <div class="history-card-item" onclick="sendQuickPrompt('Someone sent me an electricity bill disconnection notice asking to call a phone number. Is this a scam?')">
+              <div class="hist-badge-icon bg-purple">⚡</div>
+              <div class="hist-details">
+                <b data-i18n="chip_electricity">Electricity Bill SMS Verification</b>
+                <small>Today · 10:24 AM · Instant AI Verdict</small>
+              </div>
+              <span class="chevron-right">›</span>
+            </div>
+
+            <div class="history-card-item" onclick="sendQuickPrompt('Do I ever need to enter my UPI PIN to receive cashback or money?')">
+              <div class="hist-badge-icon bg-red">💳</div>
+              <div class="hist-details">
+                <b data-i18n="chip_upi">UPI PIN for Receiving Money?</b>
+                <small>Yesterday · 5:12 PM · Verified Fraud Warning</small>
+              </div>
+              <span class="chevron-right">›</span>
+            </div>
+
+            <div class="history-card-item" onclick="sendQuickPrompt('What is the 1930 Cyber Helpline and when should I call it?')">
+              <div class="hist-badge-icon bg-cyan">🚨</div>
+              <div class="hist-details">
+                <b data-i18n="chip_helpline">1930 Cyber Helpline Inquiry</b>
+                <small>2 days ago · 9:10 AM · Emergency Guidance</small>
+              </div>
+              <span class="chevron-right">›</span>
+            </div>
+
+            <div class="history-card-item" onclick="sendQuickPrompt('What is a digital arrest scam and what should I do if someone calls from police via Skype?')">
+              <div class="hist-badge-icon bg-amber">👮</div>
+              <div class="hist-details">
+                <b data-i18n="chip_arrest">Digital Arrest Police Threat</b>
+                <small>3 days ago · 4:30 PM · Severe Extortion Alert</small>
+              </div>
+              <span class="chevron-right">›</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 4. LANGUAGE SELECTION SCREEN ==================== -->
+      <section class="screen-page" id="screen-language">
+        <header class="app-header">
+          <div class="header-brand">
+            <button class="back-btn" onclick="navigateTo('chat')">←</button>
+            <div class="brand-shield-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z" fill="#4F46E5"/><path d="M12 10a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm0 1c-1.1 0-2 .6-2 1.5V14h4v-1.5c0-.9-.9-1.5-2-1.5z" fill="#F59E0B"/></svg>
+            </div>
+            <div class="brand-title-wrap">
+              <h2>CyberRakshak <span>AI</span></h2>
+              <small data-i18n="lang_subtitle">Language Selection</small>
+            </div>
+          </div>
+        </header>
+
+        <div class="screen-scroll-container padded">
+          <div class="centered-heading-wrap">
+            <div class="lang-globe-icon">🌐</div>
+            <h1 data-i18n="lang_choose_title">Choose Your Language</h1>
+            <p data-i18n="lang_choose_sub">Select your preferred language for CyberRakshak AI</p>
+          </div>
+
+          <div class="languages-vertical-list" id="languageList">
+            <label class="lang-option-card active" data-lang="en">
+              <div class="lang-code-avatar">EN</div>
+              <div class="lang-name-col">
+                <b>English</b>
+                <small>Continue in English</small>
+              </div>
+              <div class="radio-indicator"><span class="tick-mark">✓</span></div>
+            </label>
+
+            <label class="lang-option-card" data-lang="hi">
+              <div class="lang-code-avatar">HI</div>
+              <div class="lang-name-col">
+                <b>हिन्दी</b>
+                <small>हिंदी में जारी रखें (Hindi)</small>
+              </div>
+              <div class="radio-indicator"><span class="tick-mark">✓</span></div>
+            </label>
+
+            <label class="lang-option-card" data-lang="bn">
+              <div class="lang-code-avatar">BN</div>
+              <div class="lang-name-col">
+                <b>বাংলা</b>
+                <small>বাংলায় এগিয়ে যান (Bengali)</small>
+              </div>
+              <div class="radio-indicator"><span class="tick-mark">✓</span></div>
+            </label>
+
+            <label class="lang-option-card" data-lang="mr">
+              <div class="lang-code-avatar">MR</div>
+              <div class="lang-name-col">
+                <b>मराठी</b>
+                <small>मराठीत पुढे चला (Marathi)</small>
+              </div>
+              <div class="radio-indicator"><span class="tick-mark">✓</span></div>
+            </label>
+
+            <label class="lang-option-card" data-lang="ta">
+              <div class="lang-code-avatar">TA</div>
+              <div class="lang-name-col">
+                <b>தமிழ்</b>
+                <small>தமிழில் தொடரவும் (Tamil)</small>
+              </div>
+              <div class="radio-indicator"><span class="tick-mark">✓</span></div>
+            </label>
+
+            <label class="lang-option-card" data-lang="te">
+              <div class="lang-code-avatar">TE</div>
+              <div class="lang-name-col">
+                <b>తెలుగు</b>
+                <small>తెలుగులో కొనసాగించండి (Telugu)</small>
+              </div>
+              <div class="radio-indicator"><span class="tick-mark">✓</span></div>
+            </label>
+          </div>
+
+          <div class="bottom-stick-btn">
+            <button class="primary-action-btn glow-btn" onclick="navigateTo('chat')" data-i18n="btn_continue_chat">Continue to Chatbot →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 5. PROFILE SCREEN ==================== -->
+      <section class="screen-page" id="screen-profile">
+        <header class="app-header">
+          <div class="header-brand">
+            <div class="brand-shield-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z" fill="#4F46E5"/><path d="M12 10a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm0 1c-1.1 0-2 .6-2 1.5V14h4v-1.5c0-.9-.9-1.5-2-1.5z" fill="#F59E0B"/></svg>
+            </div>
+            <div class="brand-title-wrap">
+              <h2 data-i18n="profile_title">Profile</h2>
+              <small data-i18n="profile_member">CyberRakshak Member</small>
+            </div>
+          </div>
+        </header>
+
+        <div class="screen-scroll-container padded">
+          <!-- Profile Summary Hero Card -->
+          <div class="profile-summary-card">
+            <div class="profile-big-avatar">M</div>
+            <div class="profile-info-col">
+              <h3>Mayank Kumar</h3>
+              <span>mayankkumar@gmail.com</span>
+              <div class="guest-badge">
+                <span class="star-icon">✦</span> <span data-i18n="profile_guest">Guest User</span> · Protected
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Security Score Meter -->
+          <div class="security-score-widget">
+            <div class="score-widget-top">
+              <div>
+                <span class="score-kicker">Digital Defense Readiness</span>
+                <h4>Cyber Safety Shield Status</h4>
+              </div>
+              <div class="score-number-pill">98% Safe</div>
+            </div>
+            <div class="score-progress-bar">
+              <div class="score-bar-fill" style="width: 98%;"></div>
+            </div>
+            <div class="score-notes">
+              <span>🛡️ Real-time Threat Monitoring Active</span>
+              <span>Groq Cloud 27B</span>
+            </div>
+          </div>
+
+          <!-- Settings List -->
+          <div class="settings-list-card">
+            <div class="setting-item-row" onclick="navigateTo('language')">
+              <span class="item-icon">🌐</span>
+              <span class="item-name" data-i18n="setting_language">Language</span>
+              <span class="item-extra-link" id="profileLangLabel">English ›</span>
+            </div>
+
+            <div class="setting-item-row" onclick="openNotificationModal()">
+              <span class="item-icon">🔔</span>
+              <span class="item-name" data-i18n="setting_notifications">Notification Settings</span>
+              <span class="chevron-right">›</span>
+            </div>
+
+            <div class="setting-item-row" onclick="openWhatsAppFlow()">
+              <span class="item-icon text-green">💬</span>
+              <span class="item-name" data-i18n="setting_whatsapp">WhatsApp Bot Settings</span>
+              <span class="connected-tag">Connected</span>
+            </div>
+
+            <div class="setting-item-row" onclick="openHelpSupportModal()">
+              <span class="item-icon">🎧</span>
+              <span class="item-name" data-i18n="setting_help">Help &amp; Support</span>
+              <span class="chevron-right">›</span>
+            </div>
+
+            <div class="setting-item-row" onclick="openAboutModal()">
+              <span class="item-icon">ℹ️</span>
+              <span class="item-name" data-i18n="setting_about">About CyberRakshak AI</span>
+              <span class="chevron-right">›</span>
+            </div>
+
+            <div class="setting-item-row logout-row" onclick="handleLogout()">
+              <span class="item-icon text-danger">🚪</span>
+              <span class="item-name text-danger" data-i18n="setting_logout">Log Out</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ==================== NATIVE BOTTOM NAVIGATION (5 TABS - SAME AT BOTTOM) ==================== -->
+    <nav class="app-bottom-nav">
+      <!-- 1. Chatbot -->
+      <button class="bottom-tab-item active" data-tab="chat" onclick="navigateTo('chat')">
+        <div class="tab-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+        </div>
+        <span data-i18n="nav_chat">Chatbot</span>
+        <span class="tab-active-dot"></span>
+      </button>
+
+      <!-- 2. Awareness -->
+      <button class="bottom-tab-item" data-tab="academy" onclick="navigateTo('academy')">
+        <div class="tab-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z"/></svg>
+        </div>
+        <span data-i18n="nav_awareness">Awareness</span>
+        <span class="tab-active-dot"></span>
+      </button>
+
+      <!-- 3. History -->
+      <button class="bottom-tab-item" data-tab="history" onclick="navigateTo('history')">
+        <div class="tab-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <span data-i18n="nav_history">History</span>
+        <span class="tab-active-dot"></span>
+      </button>
+
+      <!-- 4. Language -->
+      <button class="bottom-tab-item" data-tab="language" onclick="navigateTo('language')">
+        <div class="tab-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <span data-i18n="nav_language">Language</span>
+        <span class="tab-active-dot"></span>
+      </button>
+
+      <!-- 5. Profile -->
+      <button class="bottom-tab-item" data-tab="profile" onclick="navigateTo('profile')">
+        <div class="tab-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <span data-i18n="nav_profile">Profile</span>
+        <span class="tab-active-dot"></span>
+      </button>
+    </nav>
+
+  </div> <!-- /mobile-app-shell -->
+
+  <!-- Common Modal Component -->
+  <div class="app-modal-overlay" id="commonModal">
+    <div class="app-modal-card">
+      <button class="close-modal-btn" onclick="closeCommonModal()">×</button>
+      <div id="modalCustomContent"></div>
+    </div>
+  </div>
+
+  <!-- Interactive AI Video Player Modal -->
+  <div class="app-modal-overlay" id="videoModal">
+    <div class="app-modal-card video-player-card">
+      <button class="close-modal-btn" onclick="closeVideoModal()">×</button>
+      <div id="videoModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="app-toast-alert" id="toastMessage"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
