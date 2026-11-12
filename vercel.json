@@ -5,7 +5,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://cyberraksha.onrender.com/api/:path*"
+      "destination": "https://cyberraksha-1-vl61.onrender.com/api/:path*"
     }
   ]
 }

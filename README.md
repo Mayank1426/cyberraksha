@@ -70,7 +70,7 @@ You can deploy the frontend on **Vercel** and the ML backend on **Render** seaml
 4. Add Environment Variables:
    - `GROQ_API_KEY`: *(Your Groq API key)*
    - `PYTHON_VERSION`: `3.11.9`
-5. Click **Deploy Web Service**. You will get your backend URL: `https://cyberraksha.onrender.com`.
+5. Click **Deploy Web Service**. You will get your backend URL: `https://cyberraksha-1-vl61.onrender.com`.
 
 ### 2. Deploy the Frontend on Vercel
 1. Go to [Vercel Dashboard](https://vercel.com/new).
@@ -78,7 +78,7 @@ You can deploy the frontend on **Vercel** and the ML backend on **Render** seaml
 3. Framework Preset: **Other** (Static HTML).
 4. Root Directory: `./` (leave default).
 5. Click **Deploy**. Vercel will deploy `index.html`, `styles.css`, `app.js`, and `assets/`.
-6. Thanks to `vercel.json` and `app.js`, the frontend automatically connects to `https://cyberraksha.onrender.com`!
+6. Thanks to `vercel.json` and `app.js`, the frontend automatically connects to `https://cyberraksha-1-vl61.onrender.com`!
 
 ---
 

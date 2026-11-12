@@ -10,13 +10,13 @@
   --primary-glow: rgba(95, 37, 159, 0.25);
   --primary-gradient: linear-gradient(135deg, #5f259f 0%, #7c3aed 100%);
   --hero-gradient: linear-gradient(135deg, #5f259f 0%, #46147d 60%, #320d5c 100%);
-  
+
   --phonepe-purple: #5f259f;
   --phonepe-dark: #3b0764;
   --phonepe-gold: #ffb703;
   --phonepe-green: #00b386;
   --phonepe-card: #ffffff;
-  
+
   --accent-cyan: #00b4d8;
   --accent-purple: #7928ca;
   --accent-gold: #f59e0b;
@@ -52,13 +52,15 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   max-width: 100vw;
   min-height: 100%;
   overflow-x: hidden;
   box-sizing: border-box;
   scroll-behavior: smooth;
+
 }
 
 body {
@@ -115,9 +117,17 @@ body {
 }
 
 @keyframes floatOrb {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(30px, 35px) scale(1.06); }
-  100% { transform: translate(-25px, -25px) scale(0.97); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(30px, 35px) scale(1.06);
+  }
+
+  100% {
+    transform: translate(-25px, -25px) scale(0.97);
+  }
 }
 
 /* ==================== FULL SCREEN WEB APPLICATION SHELL ==================== */
@@ -427,9 +437,20 @@ body {
 }
 
 @keyframes pulseDot {
-  0% { transform: scale(0.9); opacity: 0.7; }
-  50% { transform: scale(1.3); opacity: 1; }
-  100% { transform: scale(0.9); opacity: 0.7; }
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
 }
 
 /* ==================== VIEWPORT & SCREEN SWITCHER ==================== */
@@ -455,8 +476,15 @@ body {
 }
 
 @keyframes pageFadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .screen-scroll-container {
@@ -658,8 +686,15 @@ body {
 }
 
 @keyframes cardScaleUp {
-  from { opacity: 0; transform: scale(0.97); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .welcome-bot-header {
@@ -815,8 +850,15 @@ body {
 }
 
 @keyframes messageSlideIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .chat-row.user-side {
@@ -912,7 +954,8 @@ body {
   margin-bottom: 0;
 }
 
-.chat-bullet-list, .chat-numbered-list {
+.chat-bullet-list,
+.chat-numbered-list {
   padding-left: 18px;
   margin: 6px 0 10px 0;
   overflow-wrap: anywhere;
@@ -921,7 +964,8 @@ body {
   box-sizing: border-box;
 }
 
-.chat-bullet-list li, .chat-numbered-list li {
+.chat-bullet-list li,
+.chat-numbered-list li {
   margin-bottom: 4px;
   line-height: 1.45;
   overflow-wrap: anywhere;
@@ -1036,8 +1080,15 @@ body {
 }
 
 @keyframes glowPulse {
-  from { transform: scale(0.8); opacity: 0.6; }
-  to { transform: scale(1.3); opacity: 1; }
+  from {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+
+  to {
+    transform: scale(1.3);
+    opacity: 1;
+  }
 }
 
 .thinking-text {
@@ -1053,13 +1104,26 @@ body {
   animation-fill-mode: both;
 }
 
-.dots span:nth-child(2) { animation-delay: .2s; }
-.dots span:nth-child(3) { animation-delay: .4s; }
+.dots span:nth-child(2) {
+  animation-delay: .2s;
+}
+
+.dots span:nth-child(3) {
+  animation-delay: .4s;
+}
 
 @keyframes dotBlink {
-  0% { opacity: .2; }
-  20% { opacity: 1; }
-  100% { opacity: .2; }
+  0% {
+    opacity: .2;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: .2;
+  }
 }
 
 /* Forensic Threat Card Inside Chat */
@@ -1500,11 +1564,25 @@ body {
   flex-shrink: 0;
 }
 
-.bg-green { background: #dcfce7; }
-.bg-amber { background: #fef3c7; }
-.bg-cyan { background: #cffafe; }
-.bg-purple { background: #f3e8ff; }
-.bg-red { background: #fee2e2; }
+.bg-green {
+  background: #dcfce7;
+}
+
+.bg-amber {
+  background: #fef3c7;
+}
+
+.bg-cyan {
+  background: #cffafe;
+}
+
+.bg-purple {
+  background: #f3e8ff;
+}
+
+.bg-red {
+  background: #fee2e2;
+}
 
 .course-info {
   flex: 1;
@@ -2077,8 +2155,15 @@ body {
 }
 
 @keyframes modalCardPop {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .close-modal-btn {
@@ -2384,6 +2469,7 @@ body {
 }
 
 @media (min-width: 600px) {
+
   .ai-videos-grid,
   .yt-videos-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -2391,6 +2477,7 @@ body {
 }
 
 @media (min-width: 1024px) {
+
   .ai-videos-grid,
   .yt-videos-grid {
     grid-template-columns: repeat(4, 1fr);
@@ -2417,7 +2504,8 @@ body {
 .yt-video-responsive {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  padding-bottom: 56.25%;
+  /* 16:9 aspect ratio */
   height: 0;
   overflow: hidden;
   background: #0b0f19;
@@ -2518,10 +2606,25 @@ body {
   letter-spacing: 0.4px;
 }
 
-.tag-cyan { background: #06b6d4; color: #ffffff; }
-.tag-red { background: #ef4444; color: #ffffff; }
-.tag-blue { background: #3b82f6; color: #ffffff; }
-.tag-amber { background: #f59e0b; color: #ffffff; }
+.tag-cyan {
+  background: #06b6d4;
+  color: #ffffff;
+}
+
+.tag-red {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.tag-blue {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+.tag-amber {
+  background: #f59e0b;
+  color: #ffffff;
+}
 
 .video-play-overlay {
   position: absolute;

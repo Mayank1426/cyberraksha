@@ -399,7 +399,7 @@ function toast(message) {
 /**
  * Resolve Backend URL & Verify Groq Connection
  * Works across:
- * 1. Frontend on Vercel -> Backend on Render (https://cyberraksha.onrender.com or custom)
+ * 1. Frontend on Vercel -> Backend on Render (https://cyberraksha-1-vl61.onrender.com or custom)
  * 2. Full-stack deployment on Render directly
  * 3. Localhost development
  */
@@ -416,9 +416,9 @@ async function resolveApiBase() {
   candidates.push('');
 
   if (isLocalHost) {
-    candidates.push('http://localhost:8080', 'http://127.0.0.1:8080', 'https://cyberraksha.onrender.com');
+    candidates.push('http://localhost:8080', 'http://127.0.0.1:8080', 'https://cyberraksha-1-vl61.onrender.com');
   } else {
-    candidates.push('https://cyberraksha.onrender.com', 'http://localhost:8080');
+    candidates.push('https://cyberraksha-1-vl61.onrender.com', 'http://localhost:8080');
   }
 
   // Remove duplicates and blanks (except single '')
@@ -476,7 +476,7 @@ function updateGroqStatusUI(connected, modelName = '') {
  */
 function openBackendConfigModal() {
   const savedUrl = localStorage.getItem('cyberrakshak_backend_url') || '';
-  const currentUrl = savedUrl || apiBaseUrl || 'https://cyberraksha.onrender.com';
+  const currentUrl = savedUrl || apiBaseUrl || 'https://cyberraksha-1-vl61.onrender.com';
   const statusBadge = isBackendConnected 
     ? `<span style="color:#10b981;font-weight:700;">● Connected (${escapeHtml(apiBaseUrl || 'Origin')})</span>` 
     : `<span style="color:#ef4444;font-weight:700;">● Disconnected / Connecting</span>`;
@@ -488,11 +488,11 @@ function openBackendConfigModal() {
         When frontend is on <b>Vercel</b> and backend is on <b>Render</b>, enter your Render Web Service URL below:
       </p>
       <label style="display:block;font-weight:600;margin-bottom:4px;color:#334155;font-size:12px;">Render Backend URL:</label>
-      <input type="text" id="cfgBackendUrlInput" value="${escapeHtml(currentUrl)}" placeholder="https://cyberraksha.onrender.com" 
+      <input type="text" id="cfgBackendUrlInput" value="${escapeHtml(currentUrl)}" placeholder="https://cyberraksha-1-vl61.onrender.com" 
         style="width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;font-size:13px;margin-bottom:12px;outline:none;box-sizing:border-box;">
       
       <div style="display:flex;gap:8px;margin-bottom:14px;">
-        <button type="button" style="flex:1;background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;padding:8px;border-radius:6px;font-size:12px;cursor:pointer;" onclick="setBackendPreset('https://cyberraksha.onrender.com')">Default Render URL</button>
+        <button type="button" style="flex:1;background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;padding:8px;border-radius:6px;font-size:12px;cursor:pointer;" onclick="setBackendPreset('https://cyberraksha-1-vl61.onrender.com')">Default Render URL</button>
         <button type="button" style="flex:1;background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;padding:8px;border-radius:6px;font-size:12px;cursor:pointer;" onclick="setBackendPreset('')">Auto-Detect</button>
       </div>
 
