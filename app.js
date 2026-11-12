@@ -412,15 +412,13 @@ async function resolveApiBase() {
     candidates.push(customBackend.replace(/\/+$/, ''));
   }
 
+  // 1. Same-origin (relative path) is ALWAYS tested first
+  candidates.push('');
+
   if (isLocalHost) {
-    candidates.push('', 'http://localhost:8080', 'http://127.0.0.1:8080', 'https://cyberraksha.onrender.com');
+    candidates.push('http://localhost:8080', 'http://127.0.0.1:8080', 'https://cyberraksha.onrender.com');
   } else {
-    // When hosted on Vercel or cloud:
-    candidates.push(
-      'https://cyberraksha.onrender.com', // Render production URL default
-      '',                                 // Relative path (if proxied via vercel.json rewrite)
-      'http://localhost:8080'
-    );
+    candidates.push('https://cyberraksha.onrender.com', 'http://localhost:8080');
   }
 
   // Remove duplicates and blanks (except single '')
