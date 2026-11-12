@@ -398,18 +398,40 @@ function toast(message) {
 
 /**
  * Resolve Backend URL & Verify Groq Connection
+ * Works across:
+ * 1. Frontend on Vercel -> Backend on Render (https://cyberraksha.onrender.com or custom)
+ * 2. Full-stack deployment on Render directly
+ * 3. Localhost development
  */
 async function resolveApiBase() {
-  const candidates = [
-    '', // Relative if served by Flask directly
-    'http://localhost:8080',
-    'http://127.0.0.1:8080'
-  ];
+  const customBackend = (localStorage.getItem('cyberrakshak_backend_url') || '').trim();
+  const isLocalHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
-  for (const base of candidates) {
+  const candidates = [];
+  if (customBackend) {
+    candidates.push(customBackend.replace(/\/+$/, ''));
+  }
+
+  if (isLocalHost) {
+    candidates.push('', 'http://localhost:8080', 'http://127.0.0.1:8080', 'https://cyberraksha.onrender.com');
+  } else {
+    // When hosted on Vercel or cloud:
+    candidates.push(
+      'https://cyberraksha.onrender.com', // Render production URL default
+      '',                                 // Relative path (if proxied via vercel.json rewrite)
+      'http://localhost:8080'
+    );
+  }
+
+  // Remove duplicates and blanks (except single '')
+  const uniqueCandidates = [...new Set(candidates.filter(c => typeof c === 'string'))];
+
+  for (const base of uniqueCandidates) {
     try {
       const controller = new AbortController();
-      const timer = setTimeout(() => controller.abort(), 2500);
+      const timeoutMs = (base.startsWith('http://localhost') || base === '') ? 2500 : 8000;
+      const timer = setTimeout(() => controller.abort(), timeoutMs);
+
       const res = await fetch(`${base}/api/chat/status`, {
         method: 'GET',
         signal: controller.signal
@@ -422,17 +444,19 @@ async function resolveApiBase() {
         isBackendConnected = true;
         isGroqConnected = !!data.groq_connected;
         updateGroqStatusUI(true, data.primary_model || 'Groq Cloud');
+        updateBackendConfigUI();
         console.log(`✓ CyberRakshak Backend connected at [${base || 'local origin'}]:`, data);
         return base;
       }
     } catch (e) {
-      // Try next
+      // Try next candidate
     }
   }
 
   isBackendConnected = false;
   isGroqConnected = false;
   updateGroqStatusUI(false);
+  updateBackendConfigUI();
   return '';
 }
 
@@ -446,6 +470,85 @@ function updateGroqStatusUI(connected, modelName = '') {
   } else {
     badge.className = 'header-status-indicator offline';
     badge.innerHTML = `<span class="status-dot"></span> <span class="status-text">Connecting...</span>`;
+  }
+}
+
+/**
+ * Backend API Server Configuration Modal (For Vercel + Render Deployment)
+ */
+function openBackendConfigModal() {
+  const savedUrl = localStorage.getItem('cyberrakshak_backend_url') || '';
+  const currentUrl = savedUrl || apiBaseUrl || 'https://cyberraksha.onrender.com';
+  const statusBadge = isBackendConnected 
+    ? `<span style="color:#10b981;font-weight:700;">● Connected (${escapeHtml(apiBaseUrl || 'Origin')})</span>` 
+    : `<span style="color:#ef4444;font-weight:700;">● Disconnected / Connecting</span>`;
+
+  openCommonModal('Backend API Configuration', `
+    <div style="text-align:left;font-size:13px;color:#1e293b;line-height:1.5;">
+      <p style="margin-bottom:8px;"><b>Status:</b> ${statusBadge}</p>
+      <p style="margin-bottom:12px;color:#64748b;font-size:12px;">
+        When frontend is on <b>Vercel</b> and backend is on <b>Render</b>, enter your Render Web Service URL below:
+      </p>
+      <label style="display:block;font-weight:600;margin-bottom:4px;color:#334155;font-size:12px;">Render Backend URL:</label>
+      <input type="text" id="cfgBackendUrlInput" value="${escapeHtml(currentUrl)}" placeholder="https://cyberraksha.onrender.com" 
+        style="width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;font-size:13px;margin-bottom:12px;outline:none;box-sizing:border-box;">
+      
+      <div style="display:flex;gap:8px;margin-bottom:14px;">
+        <button type="button" style="flex:1;background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;padding:8px;border-radius:6px;font-size:12px;cursor:pointer;" onclick="setBackendPreset('https://cyberraksha.onrender.com')">Default Render URL</button>
+        <button type="button" style="flex:1;background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;padding:8px;border-radius:6px;font-size:12px;cursor:pointer;" onclick="setBackendPreset('')">Auto-Detect</button>
+      </div>
+
+      <div style="display:flex;gap:10px;margin-top:14px;">
+        <button class="primary-action-btn glow-btn" style="flex:2;" onclick="saveBackendConfig()">Save &amp; Connect</button>
+        <button class="action-btn" style="flex:1;background:#e2e8f0;color:#334155;border:none;border-radius:8px;cursor:pointer;" onclick="closeCommonModal()">Cancel</button>
+      </div>
+    </div>
+  `);
+}
+
+function setBackendPreset(url) {
+  const inp = document.getElementById('cfgBackendUrlInput');
+  if (inp) inp.value = url;
+}
+
+async function saveBackendConfig() {
+  const inp = document.getElementById('cfgBackendUrlInput');
+  if (!inp) return;
+  const newUrl = inp.value.trim().replace(/\/+$/, '');
+  if (newUrl) {
+    localStorage.setItem('cyberrakshak_backend_url', newUrl);
+  } else {
+    localStorage.removeItem('cyberrakshak_backend_url');
+  }
+  toast('Connecting to backend...');
+  closeCommonModal();
+  updateGroqStatusUI(false);
+  const connected = await resolveApiBase();
+  if (connected) {
+    toast('✓ Backend connected successfully!');
+  } else {
+    toast('⚠️ Server unreachable. If waking up on Render, please wait ~30s.');
+  }
+}
+
+function updateBackendConfigUI() {
+  const label = document.getElementById('profileBackendLabel');
+  if (!label) return;
+  const custom = localStorage.getItem('cyberrakshak_backend_url');
+  if (custom) {
+    try {
+      label.textContent = new URL(custom).hostname + ' ›';
+    } catch (e) {
+      label.textContent = 'Custom ›';
+    }
+  } else if (apiBaseUrl) {
+    try {
+      label.textContent = new URL(apiBaseUrl).hostname + ' ›';
+    } catch (e) {
+      label.textContent = 'Render ›';
+    }
+  } else {
+    label.textContent = 'Auto / Render ›';
   }
 }
 

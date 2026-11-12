@@ -57,7 +57,7 @@
             </div>
             <div class="brand-title-wrap">
               <h2>CyberRakshak <span>AI</span></h2>
-              <div id="groqStatusBadge" class="header-status-indicator online">
+              <div id="groqStatusBadge" class="header-status-indicator online" onclick="openBackendConfigModal()" style="cursor:pointer;" title="Click to view/change Backend API Server">
                 <span class="status-dot"></span>
                 <span class="status-text" data-i18n="groq_active">24/7 AI Protected</span>
               </div>
@@ -572,6 +572,12 @@
 
           <!-- Settings List -->
           <div class="settings-list-card">
+            <div class="setting-item-row" onclick="openBackendConfigModal()">
+              <span class="item-icon">⚙️</span>
+              <span class="item-name">Backend API Server (Render)</span>
+              <span class="item-extra-link" id="profileBackendLabel">Auto / Render ›</span>
+            </div>
+
             <div class="setting-item-row" onclick="navigateTo('language')">
               <span class="item-icon">🌐</span>
               <span class="item-name" data-i18n="setting_language">Language</span>

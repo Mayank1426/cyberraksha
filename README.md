@@ -54,27 +54,31 @@ Open [http://localhost:8080](http://localhost:8080) in your browser.
 
 ---
 
-## ☁️ Deployment on Render
+## ☁️ Deployment Architecture: Vercel (Frontend) + Render (Backend)
 
-This project is configured for one-click deployment on [Render](https://render.com).
+You can deploy the frontend on **Vercel** and the ML backend on **Render** seamlessly:
 
-### Option 1: Direct Web Service (Recommended)
-1. Go to [Render Dashboard](https://dashboard.render.com/) and click **New +** -> **Web Service**.
-2. Connect your GitHub repository: `Mayank1426/cyberraksha`.
-3. Configure the settings:
+### 1. Deploy the Backend on Render
+1. Go to [Render Dashboard](https://dashboard.render.com/) and click **New +** ➔ **Web Service**.
+2. Select your repository: `Mayank1426/cyberraksha`.
+3. Configure settings:
    - **Name**: `cyberraksha`
    - **Runtime**: `Python 3`
    - **Build Command**: `pip install -r requirements.txt`
    - **Start Command**: `gunicorn server:app`
-   - **Instance Type**: `Free`
-4. In **Environment Variables**, add:
-   - `GROQ_API_KEY`: *(Your Groq API key from console.groq.com)*
+   - **Plan**: `Free`
+4. Add Environment Variables:
+   - `GROQ_API_KEY`: *(Your Groq API key)*
    - `PYTHON_VERSION`: `3.11.9`
-5. Click **Create Web Service**. Render will build and deploy your app with a public `https://<service-name>.onrender.com` URL!
+5. Click **Deploy Web Service**. You will get your backend URL: `https://cyberraksha.onrender.com`.
 
-### Option 2: Render Blueprint
-Render will automatically detect the included `render.yaml` and `Procfile`.
-Simply connect the repository and choose **New +** -> **Blueprint**.
+### 2. Deploy the Frontend on Vercel
+1. Go to [Vercel Dashboard](https://vercel.com/new).
+2. Click **Import** next to `Mayank1426/cyberraksha`.
+3. Framework Preset: **Other** (Static HTML).
+4. Root Directory: `./` (leave default).
+5. Click **Deploy**. Vercel will deploy `index.html`, `styles.css`, `app.js`, and `assets/`.
+6. Thanks to `vercel.json` and `app.js`, the frontend automatically connects to `https://cyberraksha.onrender.com`!
 
 ---
 
@@ -86,6 +90,7 @@ cyberraksha/
 ├── index.html              # Main user interface
 ├── styles.css              # CyberRakshak theme and responsive layout
 ├── app.js                  # Frontend controllers, event handlers & API communication
+├── vercel.json             # Vercel configuration & API rewrite proxy
 ├── server.py               # Flask backend, static file server & ML inference APIs
 ├── Procfile                # WSGI entrypoint for Render / Heroku
 ├── render.yaml             # Render Blueprint configuration
